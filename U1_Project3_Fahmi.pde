@@ -1,10 +1,22 @@
 PImage balloon;
 
+float circleX[];
+float circleY[];
+
+int balloons = 100;
+
 boolean isReleased = false;
 int Screen = 0;
 void setup()
 {
   fullScreen();
+  circleX = new float[balloons];
+  circleY = new float[balloons];
+  for (int i=0; i<balloons; i++)
+  {
+    circleX[i] = (int)random(0, width);
+    circleY[i] = (int)random(0, height);
+  }
   balloon = loadImage("balloon.png");
 }
 
@@ -28,7 +40,7 @@ void keyReleased()
 
 void StartScreen()
 {
-  text("Press SAPCAPEAWPEC to begin Poppin'", width/2, height/4, 1000, 1000);
+  text("Press Space to begin Poppin'", width/2, height/4, 1000, 1000);
   if ( isReleased )
   {
     if ( key == ' ' )
@@ -41,5 +53,6 @@ void StartScreen()
 
 void BalloonPopping()
 {
-  image(balloon, 100, 115);
+  for (int i=0; i<balloons; i++)
+  image(balloon, circleX[i], circleY[i], 100, 115);
 }
