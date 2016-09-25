@@ -6,6 +6,7 @@ and even different types where you pop different things!
 */
 
 PImage balloon; 
+
 int x;
 int y;
 
